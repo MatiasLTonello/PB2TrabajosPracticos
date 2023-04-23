@@ -1,0 +1,159 @@
+package ar.edu.unlam.pb1.finalAgosto;
+
+import java.util.ArrayList;
+
+public class Contacto {
+	
+	
+	private String nombreYApellido;
+	private Integer celular;
+	private String email;
+	private String direccion;
+	private Integer codigoPostal;
+	private String localidad;
+	private String provincia;
+	private Boolean esCliente;
+	private Boolean deseaSerLlamadoNuevamente;
+	ArrayList<Llamada> llamadas = new ArrayList<>();
+	
+
+	
+	
+	
+	
+	public Contacto(String nombreYApellido, Integer celular, String email, Integer codigoPostal,
+			String localidad, String provincia) {
+
+		this.nombreYApellido = nombreYApellido;
+		this.celular = celular;
+		this.email = email;
+		this.codigoPostal = codigoPostal;
+		this.localidad = localidad;
+		this.provincia = provincia;
+		this.esCliente = false;
+		this.deseaSerLlamadoNuevamente = true;
+		
+	}
+
+	public String getNombreYApellido() {
+		return nombreYApellido;
+	}
+
+	public void setNombreYApellido(String nombreYApellido) {
+		this.nombreYApellido = nombreYApellido;
+	}
+
+	public Integer getCelular() {
+		return celular;
+	}
+
+	public void setCelular(Integer celular) {
+		this.celular = celular;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getDireccion() {
+		return direccion;
+	}
+
+	public void setDireccion(String direccion) {
+		this.direccion = direccion;
+	}
+
+	public Integer getCodigoPostal() {
+		return codigoPostal;
+	}
+
+	public void setCodigoPostal(Integer codigoPostal) {
+		this.codigoPostal = codigoPostal;
+	}
+
+	public String getLocalidad() {
+		return localidad;
+	}
+
+	public void setLocalidad(String localidad) {
+		this.localidad = localidad;
+	}
+
+	public String getProvincia() {
+		return provincia;
+	}
+
+	public void setProvincia(String provincia) {
+		this.provincia = provincia;
+	}
+
+	public Boolean getEsCliente() {
+		return esCliente;
+	}
+
+	public void setEsCliente(Boolean esCliente) {
+		this.esCliente = esCliente;
+	}
+
+	public Boolean getDeseaSerLlamadoNuevamente() {
+		return deseaSerLlamadoNuevamente;
+	}
+
+	public void setDeseaSerLlamadoNuevamente(Boolean deseaSerLlamadoNuevamente) {
+		this.deseaSerLlamadoNuevamente = deseaSerLlamadoNuevamente;
+	}
+
+	public ArrayList<Llamada> getLlamadas() {
+		return llamadas;
+	}
+
+	public void setLlamadas(ArrayList<Llamada> llamadas) {
+		this.llamadas = llamadas;
+	}
+
+	public String obtenerNombreYApellido() {
+		return nombreYApellido;
+	}
+	public Boolean esEmailValido(String eMail) {
+		/*
+		 * Eval�a si un String determinado puede ser almacenado como E-MAIL.
+		 */
+		if(!eMail.contains(".") && !eMail.contains("@")) {
+			return true;
+		} else {
+			return false;
+		}
+		
+	}
+	
+	public boolean registrarNuevaLlamada(Llamada nueva) {
+		/*
+		 * Registra una nueva llamada asociada al contacto actual.
+		 */
+		
+		Boolean agregarLlamada = llamadas.add(nueva); 
+		if(nueva.isFueExitosa()) {
+			setDeseaSerLlamadoNuevamente(true);
+		} else {
+			setDeseaSerLlamadoNuevamente(false);
+		}
+		return agregarLlamada;
+	}
+	
+	public String toString() {
+
+	    return "Nombre y Apellido: " + nombreYApellido +
+	            "\nCelular: " + celular +
+	            "\nEmail: " + email +
+	            "\nDirección: " + direccion +
+	            "\nCódigo Postal: " + codigoPostal +
+	            "\nLocalidad: " + localidad +
+	            "\nProvincia: " + provincia +
+	            "\n¿Es cliente?: " + esCliente ;
+	}
+	
+}

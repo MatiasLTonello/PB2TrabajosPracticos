@@ -1,0 +1,28 @@
+package ar.edu.unlam;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+public class TestSistema {
+
+	@Test
+	public void queSePuedaCrearUnSistema() {
+		final String nombreDelSistema = "GM2";
+		final Integer cantidadMaximaDeUsuarios = 5;
+		
+		Sistema GM2 = new Sistema(nombreDelSistema, cantidadMaximaDeUsuarios);
+		
+		assertNotNull(GM2);
+	}
+	
+	public void queSeEsteGuardandoBienElNombreDelSistema() {
+		final String nombreDelSistema = "GM2";
+		final Integer cantidadMaximaDeUsuarios = 5;
+		
+		Sistema GM2 = new Sistema(nombreDelSistema, cantidadMaximaDeUsuarios);
+		
+		assertEquals(GM2.getNombreDelSistema(), nombreDelSistema);
+	}
+
+}

@@ -1,0 +1,50 @@
+package ar.edu.unlam;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+public class PruebaEquipo {
+
+	@Test
+	public void queSePuedaAgregarUnJugadorAUnEquipo() {
+		//Datos de entrada
+		Equipo river = new Equipo("River Plate");
+		Jugador jugador1 = new Jugador("Mati", 40143300);
+		final int CANTIDAD_DE_JUGADORES_ESPERADOS = 1;
+		// Ejecucion
+		
+		
+		//Validacion
+		assertTrue(river.agregarJugador(jugador1));
+	}
+	
+	@Test
+	public void queAlCrearUnJugadorSeLePuedaPonerUnValor() {
+		//Datos de entrada
+		final Double precioDelJugador = 2000.00;
+
+
+		// Ejecucion
+		Jugador jugador1 = new Jugador("Mati", 40143300, 2000.00);
+		
+		//Validacion
+		
+		assertEquals(jugador1.getPrecioDelJugador(), precioDelJugador);
+		
+	}
+	
+	@Test
+	public void queSePuedaCrearUnEquipo() {
+		//Datos de entrada
+		
+		// Ejecucion
+		
+		Equipo river = new Equipo("River Plate");
+		
+		//Validacion
+		
+		assertNotNull(river);
+	}
+
+}

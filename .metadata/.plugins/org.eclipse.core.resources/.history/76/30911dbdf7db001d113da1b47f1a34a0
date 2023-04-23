@@ -1,0 +1,26 @@
+package ar.edu.unlam.pb;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+public class TestAlumno {
+
+	@Test
+	public void queSeGuardeCorrectamenteLaNotaDelPrimerParcial() {
+		// Datos de entrada
+		
+		int notaDelPrimerParcial = 7;
+		Alumno actual;
+		
+		// Ejecucion
+		
+		actual = new Alumno();
+		actual.setNotaPrimerParcial(notaDelPrimerParcial);
+		
+		// Validacion
+		
+		assertEquals(notaDelPrimerParcial, 7);
+	}
+
+}

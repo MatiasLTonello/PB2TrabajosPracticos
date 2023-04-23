@@ -1,0 +1,75 @@
+package ar.edu.unlam.pb1.finalAgosto;
+import java.util.ArrayList;
+import java.util.List;
+
+public class Empresa {
+
+	private String nombre;
+	ArrayList<Contacto> contactos = new ArrayList<>();
+	ArrayList<Integer> zonaDeCobertura = new ArrayList<>();
+	public Empresa() {
+		this.nombre = "Probando";
+	}
+	
+	
+	public String getNombreEmpresa() {
+		return this.nombre;
+	}
+	
+	public boolean agregarNuevoContacto(Contacto nuevo) {
+		 boolean fueAgregado = contactos.add(nuevo);
+		 return fueAgregado;
+	}
+	
+	public boolean agregarNuevaZonaDeCobertura(int codigoPostal) {
+
+		boolean seAgregoZonaDeCobertura = zonaDeCobertura.add(codigoPostal);
+		return seAgregoZonaDeCobertura;
+	}	
+	
+	private boolean elCodigoPostalEstaDentroDeLaZonaDeCobertura(int codigoPostal) {
+	
+		if(zonaDeCobertura.contains(codigoPostal)) {
+			return true;
+		} else {
+		return false;
+		}
+	}
+	
+	public Contacto buscarCandidato() {
+	    List<Contacto> contactosCumplenCriterios = new ArrayList<>();
+
+	    for (Contacto contacto : contactos) {
+	        if (!esCliente(contacto) && deseaSerLlamado(contacto) && estaEnZonaDeCobertura(contacto)) {
+	            contactosCumplenCriterios.add(contacto);
+	        }
+	    }
+
+	    if (contactosCumplenCriterios.isEmpty()) {
+	        return null;
+	    } else {
+	        int indiceAleatorio = (int) (Math.random() * contactosCumplenCriterios.size());
+	        return contactosCumplenCriterios.get(indiceAleatorio);
+	    }
+	}
+
+
+	private boolean estaEnZonaDeCobertura(Contacto contacto) {
+		int contactoUbicacion = contacto.getCodigoPostal();
+		return elCodigoPostalEstaDentroDeLaZonaDeCobertura(contactoUbicacion);
+	
+	}
+
+
+	private boolean deseaSerLlamado(Contacto contacto) {
+		boolean deseaSerLlamado = contacto.getDeseaSerLlamadoNuevamente();
+		return deseaSerLlamado;
+	}
+
+
+	private boolean esCliente(Contacto contacto) {
+		boolean esCliente = contacto.getEsCliente();
+		return esCliente;
+		
+	}
+}

@@ -1,0 +1,38 @@
+package ar.edu.unlam;
+
+import java.util.LinkedList;
+
+public class Sistema {
+	
+	private String nombreDelSistema;
+	private Integer cantidadMaximaDeUsuarios;
+	private LinkedList<Usuario> usuarios = new LinkedList<>();
+
+	public Sistema(String nombreDelSistema, Integer cantidadMaximaDeUsuarios) {
+		this.setNombreDelSistema(nombreDelSistema);
+		this.setCantidadMaximaDeUsuarios(cantidadMaximaDeUsuarios);
+	}
+
+	public String getNombreDelSistema() {
+		return nombreDelSistema;
+	}
+
+	public void setNombreDelSistema(String nombreDelSistema) {
+		this.nombreDelSistema = nombreDelSistema;
+	}
+
+	public Integer getCantidadMaximaDeUsuarios() {
+		return cantidadMaximaDeUsuarios;
+	}
+
+	public void setCantidadMaximaDeUsuarios(Integer cantidadMaximaDeUsuarios) {
+		this.cantidadMaximaDeUsuarios = cantidadMaximaDeUsuarios;
+	}
+
+	public boolean agregarUsuario(Usuario usuario) {
+		
+		return false;
+	}
+
+	
+}

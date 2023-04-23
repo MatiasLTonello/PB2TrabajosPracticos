@@ -1,0 +1,24 @@
+package ar.edu.unlam;
+
+public class Partido {
+	
+	private Equipo equipoLocal;
+	private Equipo equipoVisitante;
+
+	
+	public Partido(Equipo equipoLocal, Equipo equipoVisitante) {
+		this.equipoLocal = equipoLocal;
+		this.equipoVisitante = equipoVisitante;
+	}
+
+	public Equipo getEquipoLocal() {
+		return equipoLocal;
+	}
+	
+	public String getNombreEquipoLocal() {
+		return equipoLocal.getNombreDelEquipo();
+	}
+
+
+
+}

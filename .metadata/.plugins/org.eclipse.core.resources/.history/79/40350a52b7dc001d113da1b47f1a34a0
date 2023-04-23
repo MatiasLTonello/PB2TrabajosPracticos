@@ -1,0 +1,13 @@
+package ar.edu.unlam;
+
+public class Jugador {
+	
+	private String nombre;
+	private Integer dni;
+	
+	public Jugador(String nombre, Integer dni) {
+		this.nombre = "Nombre";
+		this.dni = dni;
+	}
+
+}
