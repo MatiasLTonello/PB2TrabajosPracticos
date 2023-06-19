@@ -4,7 +4,7 @@ public abstract class Cuenta {
 
 	private String DNI;
 	private String nombreYApellido;
-	private Double dineroEnCuenta;
+	protected Double dineroEnCuenta;
 	private Boolean esVip;
 	
 	public Cuenta(String dNI, String nombreYApellido, Double dineroEnCuenta, Boolean esVip) {
@@ -15,8 +15,11 @@ public abstract class Cuenta {
 	}
 	
 	public abstract Boolean extraerDinero(Double dineroAExtraer);
-	public abstract Double depositarDinero(Double dineroADepositar);
-
+	
+	public Double depositarDinero(Double dineroADepositar) {
+		this.setDineroEnCuenta(getDineroEnCuenta() + dineroADepositar);
+		return this.getDineroEnCuenta();
+	}
 	
 	public Cuenta(String dNI, String nombreYApellido) {
 		DNI = dNI;

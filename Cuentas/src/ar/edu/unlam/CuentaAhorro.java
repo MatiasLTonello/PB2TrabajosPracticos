@@ -6,7 +6,6 @@ public class CuentaAhorro extends Cuenta {
 	public CuentaAhorro(String dNI, String nombreYApellido) {
 		super(dNI, nombreYApellido);
 		this.setCantidadDeExtracciones(0);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
@@ -28,11 +27,6 @@ public class CuentaAhorro extends Cuenta {
 		return false;
 	}
 
-	@Override
-	public Double depositarDinero(Double dineroADepositar) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	public Integer getCantidadDeExtracciones() {
 		return cantidadDeExtracciones;

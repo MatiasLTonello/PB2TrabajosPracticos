@@ -17,11 +17,7 @@ public class CuentaSueldo extends Cuenta{
 		return false;
 	}
 
-	@Override
-	public Double depositarDinero(Double dineroADepositar) {
-		this.setDineroEnCuenta(getDineroEnCuenta() + dineroADepositar);
-		return this.getDineroEnCuenta();
-	}
+
 
 	
 

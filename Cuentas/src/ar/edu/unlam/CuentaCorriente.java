@@ -1,30 +1,31 @@
 package ar.edu.unlam;
 
 public class CuentaCorriente extends Cuenta {
+    private double limiteDescubierto;
 
-	public CuentaCorriente(String dNI, String nombreYApellido) {
+    public CuentaCorriente(String dNI, String nombreYApellido, Double limiteDescubierto) {
 		super(dNI, nombreYApellido);
-		// TODO Auto-generated constructor stub
+		this.limiteDescubierto = limiteDescubierto;
 	}
+
 
 	@Override
 	public Boolean extraerDinero(Double dineroAExtraer) {
-		if(this.getDineroEnCuenta() <= dineroAExtraer) {
-			Double nuevoTotal = this.getDineroEnCuenta() - dineroAExtraer;
-			this.setDineroEnCuenta(nuevoTotal);
+		Double saldoDisponible = this.getDineroEnCuenta() + limiteDescubierto;
+		if(saldoDisponible >= dineroAExtraer) {
+			if(this.getDineroEnCuenta() >= dineroAExtraer) {
+			Double nuevoSaldo = this.getDineroEnCuenta() - dineroAExtraer;
+			this.setDineroEnCuenta(nuevoSaldo);
 			return true;
-		}
+			} else {
+			 Double descubiertoUtilizado = dineroAExtraer - this.getDineroEnCuenta();
+             Double comision = descubiertoUtilizado * 0.05;
+             this.setDineroEnCuenta(0.00);
+             return true;
+			}
+		} 
 		return false;
 	}
 
-	@Override
-	public Double depositarDinero(Double dineroADepositar) {
-		this.setDineroEnCuenta(getDineroEnCuenta() + dineroADepositar);
-		return this.getDineroEnCuenta();
-	}
 	
-	
-
-
-
 }
