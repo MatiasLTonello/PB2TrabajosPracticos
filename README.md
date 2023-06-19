@@ -9,6 +9,7 @@ Trabajos Practicos realizados para la materia Programación Básica 2 de la tecn
 
 - Sistema
 - Futsal
+- Cuenta
 
 
 
@@ -54,3 +55,31 @@ a.Gol, se interesa conocer el autor y el minuto en el que ocurrió
 b.Amonestados, se desea conocer el jugador amonestado y en qué minuto (cuando un jugador es amonestado en dos oportunidades automáticamente debe ser expulsado, y se espera que el sistema informes esta situación). 
 
 c.Expulsados, ya sea por doble amonestación o por expulsión directa, se debe conocer los jugadores que son expulsados del partido. Ver el resumen. En este resumen se espera conocer el resultado del partido, y el detalle de los autores de los goles, amonestados y expulsados 
+
+
+## Cuenta 
+
+Tipos de cuentas
+Vamos a establecer, para el contexto de este ejercicio, tres tipos de cuentas: la Cuenta
+Sueldo, la Caja de Ahorros y la Cuenta Corriente. Cada una cumple con ciertas reglas de
+negocio, las cuales se detallan a continuación.
+
+Cuenta Sueldo
+Es el tipo de cuenta más simple, ya que se rige por la premisa de que en tanto y en
+cuanto se tenga tanto o más dinero en cuenta del que se quiere extraer, la operación
+se debe efectuar correctamente.
+
+Caja de Ahorros
+Similar a la anterior, pero se pide que luego de la quinta extracción de dinero se
+cobre un costo adicional por extracción de $ 6
+
+Cuenta Corriente
+La más compleja de las cuentas, ésta permite establecer una cantidad de dinero a
+girar en descubierto. Es por ello que cada vez que se desee extraer dinero, no sólo
+se considera el que se posee, sino el límite adicional que el banco estará brindando.
+Por supuesto esto no es gratis, ya que el banco nos cobrará un 5% como comisión
+sobre todo el monto en descubierto consumido en la operación.
+Por ejemplo, si tuviéramos $ 100 en la cuenta, y quisiéramos retirar $ 200 (con un
+descubierto de $ 150), podremos hacerlo. Pasaremos a deberle al banco $ 105 en
+total: los $ 100 que nos cubrió, más el 5% adicional sobre el descubierto otorgado.
+
