@@ -38,21 +38,21 @@ public abstract class Cuenta {
 	
     public void agregarDinero(Double monto) {
         saldo += monto;
-        Transaccion transaccion = new Transaccion("deposito", cbu, cbu, monto);
-        transacciones.add(transaccion);
+//        Transaccion transaccion = new Transaccion("deposito", cbu, cbu, monto);
+//        transacciones.add(transaccion);
     }
 
-    public abstract void retirarDinero(Double monto);
+    public abstract void retirarDinero(Double monto) throws SaldoInsuficienteException;
 
-    public void transferir(Double monto, Cuenta destino) {
-        if (saldo >= monto) {
-            saldo -= monto;
-            destino.agregarDinero(monto);
-            Transaccion transaccion = new Transaccion("transferencia", cbu, destino.getCbu(), monto);
-            transacciones.add(transaccion);
-        } else {
-            throw new SaldoInsuficienteException("Saldo insuficiente en la cuenta " + cbu);
-        }
-    }
+//    public void transferir(Double monto, Cuenta destino) {
+//        if (saldo >= monto) {
+//            saldo -= monto;
+//            destino.agregarDinero(monto);
+//            Transaccion transaccion = new Transaccion("transferencia", cbu, destino.getCbu(), monto);
+//            transacciones.add(transaccion);
+//        } else {
+//            throw new SaldoInsuficienteException("Saldo insuficiente en la cuenta " + cbu);
+//        }
+//    }
 	
 }

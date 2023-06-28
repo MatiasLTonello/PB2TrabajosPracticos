@@ -7,5 +7,11 @@ public class CuentaCorriente extends Cuenta {
 		// TODO Auto-generated constructor stub
 	}
 
+	@Override
+	public void retirarDinero(Double monto) {
+		// TODO Auto-generated method stub
+		
+	}
+
 	
 }

@@ -8,8 +8,12 @@ public class CuentaSueldo extends Cuenta {
 	}
 
 	@Override
-	public void retirarDinero(Double monto) {
-		// TODO Auto-generated method stub
+	public void retirarDinero(Double monto) throws SaldoInsuficienteException {
+		if(monto <= this.saldo) {
+			this.saldo -= monto;
+		} else {
+			throw new SaldoInsuficienteException("No podes retirar mas guita de la que tenes");
+		}
 		
 	}
 
