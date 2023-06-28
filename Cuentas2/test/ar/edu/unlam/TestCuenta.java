@@ -11,9 +11,10 @@ public class TestCuenta {
 	public void queSePuedaInstanciarUnaCuentaCorrienteCorrectamente() {
 		final String CBU_FINAL_ESPERADO = "20401433008";
 		final String NOMBRE_FINAL_ESPERADO = "Matias Tonello";
+		final Double DINERO_DESCUBIERTO_FINAL = 150.00;
 		final Double DINERO_INICIAL_ESPERADO = 0.0;
 		
-		Cuenta nuevaCuenta = new CuentaCorriente(CBU_FINAL_ESPERADO, NOMBRE_FINAL_ESPERADO);
+		Cuenta nuevaCuenta = new CuentaCorriente(CBU_FINAL_ESPERADO, NOMBRE_FINAL_ESPERADO, DINERO_DESCUBIERTO_FINAL);
 		
 		assertNotNull(nuevaCuenta);
 		assertEquals(NOMBRE_FINAL_ESPERADO, nuevaCuenta.getNombreDelPropietario());
@@ -94,6 +95,23 @@ public class TestCuenta {
 		assertEquals(CANTIDAD_DE_EXCTRACCIONES_ESPERADAS, ((CuentaAhorro)nuevaCuenta).getCantidadDeExctracciones());
 		
 		assertEquals(SALDO_FINAL_ESPERADO, nuevaCuenta.getSaldo(), 0.1);
+	}
+	
+	@Test
+	public void queSePuedaRetirarTeniendoElSaldoDeDescubiertoEnCuentaYSeCobreElPorcentaje() throws SaldoInsuficienteException {
+		final String CBU_FINAL_ESPERADO = "20401433008";
+		final String NOMBRE_FINAL_ESPERADO = "Matias Tonello";
+		final Double SALDO_DESCUBIERTO = 150.00;
+		final Double SALDO_FINAL_ESPERADO = -105.00;
+	
+		
+		Cuenta nuevaCuenta = new CuentaCorriente(CBU_FINAL_ESPERADO, NOMBRE_FINAL_ESPERADO, SALDO_DESCUBIERTO);
+		
+		nuevaCuenta.agregarDinero(100.00);
+		nuevaCuenta.retirarDinero(200.00);
+
+		assertEquals(SALDO_FINAL_ESPERADO, nuevaCuenta.getSaldo(), 0.1);
+		
 	}
 	
 

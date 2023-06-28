@@ -14,7 +14,7 @@ public abstract class Cuenta {
 		this.CBU = cBU;
 		this.nombreDelPropietario = nombreDelPropietario;
 		this.saldo = 0.00;
-		this.transacciones = new ArrayList<>();
+		transacciones = new ArrayList<>();
 	}
 	
 	public String getCBU() {
@@ -38,21 +38,35 @@ public abstract class Cuenta {
 	
     public void agregarDinero(Double monto) {
         saldo += monto;
-//        Transaccion transaccion = new Transaccion("deposito", cbu, cbu, monto);
-//        transacciones.add(transaccion);
+        Transaccion transaccion = new Transaccion(TipoDeTransaccion.DEPOSITO, this.CBU, null , monto);
+        transacciones.add(transaccion);
+    }
+    
+    public void agregarTransaccion(Transaccion transaccion) {
+        transacciones.add(transaccion);
+    }
+    
+    public void transferirDinero(Cuenta cuentaDestino, Double monto) throws SaldoInsuficienteException {
+        if (saldo >= monto) {
+            this.retirarDinero(monto);
+            cuentaDestino.agregarDinero(monto);
+
+            Transaccion transaccionOrigen = new Transaccion(TipoDeTransaccion.DEPOSITO, this.getCBU(), cuentaDestino.getCBU(), monto);
+            transacciones.add(transaccionOrigen);
+
+            Transaccion transaccionDestino = new Transaccion(TipoDeTransaccion.DEPOSITO, this.getCBU(), cuentaDestino.getCBU(), monto);
+            transacciones.add(transaccionDestino);
+        } else {
+            throw new SaldoInsuficienteException("Saldo insuficiente para transferir $" + monto);
+        }
+    }
+    
+    public List<Transaccion> getHistorialTransacciones() {
+        return transacciones;
     }
 
     public abstract void retirarDinero(Double monto) throws SaldoInsuficienteException;
 
-//    public void transferir(Double monto, Cuenta destino) {
-//        if (saldo >= monto) {
-//            saldo -= monto;
-//            destino.agregarDinero(monto);
-//            Transaccion transaccion = new Transaccion("transferencia", cbu, destino.getCbu(), monto);
-//            transacciones.add(transaccion);
-//        } else {
-//            throw new SaldoInsuficienteException("Saldo insuficiente en la cuenta " + cbu);
-//        }
-//    }
+
 	
 }

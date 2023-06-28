@@ -23,6 +23,8 @@ public class CuentaAhorro extends Cuenta {
 	                cantidadDeExtracciones++;
 	            }
 	        }
+	        Transaccion transaccion = new Transaccion(TipoDeTransaccion.EXTRACCION, this.CBU, null, monto);
+	        this.agregarTransaccion(transaccion);
 	    } else {
 	        throw new SaldoInsuficienteException("Saldo insuficiente para retirar $" + monto);
 	    }
