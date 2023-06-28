@@ -114,5 +114,17 @@ public class TestCuenta {
 		
 	}
 	
+	@Test
+	public void queNoSePuedanAgregarDosCuentasConElMismoCBU() {
+	    Banco galicia = new Banco("Galicia");
+
+	    Cuenta nuevaCuenta = new CuentaCorriente("20401433008", "MATUTE", 200.00);
+	    Cuenta nuevaCuenta2 = new CuentaCorriente("20401433008", "MATUTE", 200.00);
+
+	    assertTrue(galicia.agregarCuenta(nuevaCuenta));
+	    assertFalse(galicia.agregarCuenta(nuevaCuenta2));
+	}
+
+	
 
 }

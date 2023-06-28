@@ -2,6 +2,7 @@ package ar.edu.unlam;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public abstract class Cuenta {
 
@@ -10,8 +11,8 @@ public abstract class Cuenta {
 	protected Double saldo;
 	private List<Transaccion> transacciones;
 	
-	public Cuenta(String cBU, String nombreDelPropietario) {
-		this.CBU = cBU;
+	public Cuenta(String CBU, String nombreDelPropietario) {
+		this.CBU = CBU;
 		this.nombreDelPropietario = nombreDelPropietario;
 		this.saldo = 0.00;
 		transacciones = new ArrayList<>();
@@ -20,12 +21,14 @@ public abstract class Cuenta {
 	public String getCBU() {
 		return CBU;
 	}
-	public void setCBU(String cBU) {
-		CBU = cBU;
+	public void setCBU(String CBU) {
+		this.CBU = CBU;
 	}
 	public String getNombreDelPropietario() {
 		return nombreDelPropietario;
 	}
+		
+
 	public void setNombreDelPropietario(String nombreDelPropietario) {
 		this.nombreDelPropietario = nombreDelPropietario;
 	}
@@ -44,7 +47,7 @@ public abstract class Cuenta {
     
     public void agregarTransaccion(Transaccion transaccion) {
         transacciones.add(transaccion);
-    }
+    } 	
     
     public void transferirDinero(Cuenta cuentaDestino, Double monto) throws SaldoInsuficienteException {
         if (saldo >= monto) {
@@ -67,6 +70,21 @@ public abstract class Cuenta {
 
     public abstract void retirarDinero(Double monto) throws SaldoInsuficienteException;
 
+	@Override
+	public int hashCode() {
+	    return Objects.hash(CBU);
+	}
 
+	@Override
+	public boolean equals(Object obj) {
+	    if (this == obj)
+	        return true;
+	    if (obj == null)
+	        return false;
+	    if (getClass() != obj.getClass())
+	        return false;
+	    Cuenta other = (Cuenta) obj;
+	    return Objects.equals(CBU, other.CBU);
+	}
 	
 }
