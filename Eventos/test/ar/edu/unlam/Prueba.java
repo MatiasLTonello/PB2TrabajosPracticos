@@ -16,7 +16,7 @@ public class Prueba {
 		// Ejecuci�n
 		PlanificadorDeEventos principal = new PlanificadorDeEventos();
 		principal.add(new Usuario(mailOrganizador, nombreOrganizador, edadOrganizador));
-		principal.crear(principal.getUsuario(mailOrganizador), new Cumple((Agasajado)new Usuario(mailAgasajado, nombreAgasajado, edadAgasajado)));
+		principal.crear((Organizador)principal.getUsuario(mailOrganizador), (Evento)new Cumple((Agasajado)new Usuario(mailAgasajado, nombreAgasajado, edadAgasajado)));
 		
 		// Validaci�n
 		assertEquals(cantidadDeUsuariosEsperados, principal.getCantidadDeUsuarios());
