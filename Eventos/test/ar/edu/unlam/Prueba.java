@@ -98,5 +98,32 @@ public class Prueba {
 		assertEquals(cantidadDeInvitadosEsperados, principal.getEvento("El cumple de Lionel Messi").getCantidadDeInvitados());
 		assertEquals(cantidadDeInvitadosConfirmados, principal.getEvento("El cumple de Lionel Messi").getCantidadDeInvitadosConfirmados());
 	}
+	
+	@Test(expected = UsuarioNoInvitado.class)
+	public void queSiUnUsuarioAsisteAUnEventoQueNoFueInvitadoSalgaException () throws UsuarioNoInvitado {
+		// Preparaci�n
+		final String mailOrganizador = "chiquitapia@afa.com", nombreOrganizador = "Chiqui Tapia", mailAgasajado = "lio@Messi.com", nombreAgasajado = "Lionel Messi";
+		final Integer edadOrganizador = 55, edadAgasajado = 36;
+		final Integer cantidadDeUsuariosEsperados = 4, cantidadDeInvitadosEsperados =  1, cantidadDeInvitadosConfirmados = 1;
+		Invitado elKun = new Invitado("kunaguero@kunisports.com", "Sergio Aguero", 36);
+		Invitado elSegundo = new Invitado("kmbappe@second.com", "Kylian Mbapee", 24);
+		Agasajado agasajado = new Agasajado(mailAgasajado, nombreAgasajado, edadAgasajado);
+		// Ejecuci�n
+		PlanificadorDeEventos principal = new PlanificadorDeEventos();
+		principal.add(new Organizador(mailOrganizador, nombreOrganizador, edadOrganizador));
+		principal.add(elKun);
+		principal.add(elSegundo);
+		Organizador organizadorDelEvento = (Organizador) principal.getUsuario(mailOrganizador);
+		Cumple elCumpleDeLeo = new Cumple(agasajado);
+		principal.crear(organizadorDelEvento, (Evento)elCumpleDeLeo);
+		principal.invitar(elCumpleDeLeo, elKun);
+		principal.confirmar(elCumpleDeLeo, elKun);
+		
+		// Validaci�n
+		assertEquals(cantidadDeUsuariosEsperados, principal.getCantidadDeUsuarios());
+		assertEquals(cantidadDeInvitadosEsperados, principal.getEvento("El cumple de Lionel Messi").getCantidadDeInvitados());
+		assertEquals(cantidadDeInvitadosConfirmados, principal.getEvento("El cumple de Lionel Messi").getCantidadDeInvitadosConfirmados());
+		assertFalse(principal.getEvento("El cumple de Lionel Messi").asistir(elSegundo));
+	}
 
 }

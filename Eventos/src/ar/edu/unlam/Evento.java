@@ -74,5 +74,12 @@ public abstract class Evento {
 	public Integer getCantidadDeInvitadosConfirmados() {
 		return confirmados.size();
 	}
+	public Boolean asistir(Invitado elSegundo) throws UsuarioNoInvitado{
+		if(invitados.contains(elSegundo)) {
+			return true;
+		}
+			throw new UsuarioNoInvitado("El usuario no fue invitado");
+		
+	}
 	
 }
