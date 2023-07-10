@@ -29,6 +29,9 @@ public class PlanificadorDeEventos {
 	}
 
 	public void crear(Organizador organizador, Evento cumple) {
+		usuarios.add(organizador);
+		usuarios.addAll(cumple.getAgasajado());
+		cumple.setOrganizador(organizador);
 		eventos.put(cumple, organizador);	
 	}
 
@@ -38,5 +41,37 @@ public class PlanificadorDeEventos {
 
 	public Integer getCantidadDeEventos() {
 		return eventos.size();
+	}
+
+	public Integer getCantidadDeCumpleanios() {
+		Set<Evento> todosLosEventos = eventos.keySet();
+		Integer cantidadDeCumpleanios = 0;
+		for(Evento actual: todosLosEventos) {
+			if(actual instanceof Cumple) {
+				cantidadDeCumpleanios++;
+			}
+		}
+		return cantidadDeCumpleanios;
+	}
+
+	public Evento getEvento(String descripcionEvento) {
+		Set<Evento> todosLosEventos = eventos.keySet();
+		for(Evento actual: todosLosEventos) {
+			if(actual.getDescripcion().equals(descripcionEvento)) {
+				return actual;
+			}
+		}
+		return null;
+	}
+
+	public Integer getCantidadDeCasamientos() {
+		Set<Evento> todosLosEventos = eventos.keySet();
+		Integer cantidadDeCasamientos = 0;
+		for(Evento actual: todosLosEventos) {
+			if(actual instanceof Casamiento) {
+				cantidadDeCasamientos++;
+			}
+		}
+		return cantidadDeCasamientos;
 	}
 }
