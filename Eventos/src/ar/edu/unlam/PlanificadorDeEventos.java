@@ -74,4 +74,15 @@ public class PlanificadorDeEventos {
 		}
 		return cantidadDeCasamientos;
 	}
+
+	public void invitar(Evento elEvento, Invitado invitado) {
+		elEvento.add(invitado);
+	}
+
+	public void confirmar(Evento alQueConfirma, Invitado elQueConfirma) {
+
+		alQueConfirma.confirmar(elQueConfirma);
+	}
+
+
 }
