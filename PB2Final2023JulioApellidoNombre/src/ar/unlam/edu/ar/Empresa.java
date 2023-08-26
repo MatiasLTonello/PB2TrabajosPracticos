@@ -17,6 +17,7 @@ public class Empresa {
 		this.viajes = new HashMap<Integer, Viaje>();
 		this.tickets = new HashSet<Ticket>();
 	}
+	
 
 	public String getNombre() {
 		return nombre;
