@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class Usuario {
 	
-	private String mail, nombre;
+	private String mail, nombre, dni;
 	private Integer edad;
 
 	public String getMail() {
